@@ -31,3 +31,12 @@ body {
   background: rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
+
+.col button {
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+}
