@@ -18,6 +18,9 @@ document.addEventListener('click', (event) => {
     node.classList.toggle('fa-lock-open');
     node.classList.toggle('fa-lock');
   }
+  if (type === 'copy') {
+    copyToClipboard(event.target.textContent);
+  }
 });
 
 document.addEventListener('dblclick', () => {
