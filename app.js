@@ -31,11 +31,18 @@ function copyToClipboard(text) {
   return navigator.clipboard.writeText(text);
 }
 
-function setRandomColors() {
-  const colors = [];
-  cols.forEach((col) => {
+function setRandomColors(isInitial = false) {
+  let colors = [];
+  if (isInitial) {
+    colors = getColorsFromHash();
+  }
+  cols.forEach((col, index) => {
     const isLocked = col.querySelector('i').classList.contains('fa-lock');
-    const color = chroma.random();
+    const color = isInitial
+      ? colors[index]
+        ? colors[index]
+        : chroma.random()
+      : chroma.random();
     const text = col.querySelector('h2');
     const button = col.querySelector('button');
 
@@ -68,4 +75,12 @@ function updateColorHash(colors = []) {
     .join('-');
 }
 
-setRandomColors();
+function getColorsFromHash() {
+  if (document.location.hash.length <= 1) return [];
+  return document.location.hash
+    .slice(1)
+    .split('-')
+    .map((color) => '#' + color);
+}
+
+setRandomColors(true);
