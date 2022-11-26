@@ -11,7 +11,6 @@ body {
 }
 
 .col {
-  border: 1px solid black;
   flex: 1;
   background: #ccc;
   display: flex;
@@ -39,4 +38,5 @@ body {
   color: #fff;
   padding: 10px;
   border-radius: 10px;
+  transition: background 0.3s;
 }
