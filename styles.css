@@ -5,6 +5,17 @@
 }
 
 body {
+  font-family: 'Roboto', sans-serif;
   height: 100vh;
   display: flex;
+}
+
+.col {
+  border: 1px solid black;
+  flex: 1;
+  background: #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
