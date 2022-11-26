@@ -6,6 +6,12 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
+document.addEventListener('click', (event) => {
+  const type = event.target.dataset.type;
+  if (type === 'lock') {
+  }
+});
+
 function setRandomColors() {
   cols.forEach((col) => {
     const color = chroma.random();
