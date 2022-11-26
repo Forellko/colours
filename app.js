@@ -32,23 +32,40 @@ function copyToClipboard(text) {
 }
 
 function setRandomColors() {
+  const colors = [];
   cols.forEach((col) => {
     const isLocked = col.querySelector('i').classList.contains('fa-lock');
-    if (isLocked) return;
     const color = chroma.random();
     const text = col.querySelector('h2');
     const button = col.querySelector('button');
+
+    if (isLocked) {
+      colors.push(text.textContent);
+      return;
+    }
+
+    colors.push(color);
 
     text.textContent = color;
     col.style.background = color;
     col.style.color = setTextColor(text, color);
     col.style.color = setTextColor(button, color);
   });
+
+  updateColorHash(colors);
 }
 
 function setTextColor(text, color) {
   const luminance = chroma(color).luminance();
   text.style.color = luminance > 0.5 ? 'black' : 'white';
+}
+
+function updateColorHash(colors = []) {
+  document.location.hash = colors
+    .map((col) => {
+      return col.toString().slice(1);
+    })
+    .join('-');
 }
 
 setRandomColors();
