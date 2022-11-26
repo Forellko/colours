@@ -17,14 +17,19 @@ document.addEventListener('click', (event) => {
 
     node.classList.toggle('fa-lock-open');
     node.classList.toggle('fa-lock');
+  } else {
+    setRandomColors();
   }
 });
 
 function setRandomColors() {
   cols.forEach((col) => {
+    const isLocked = col.querySelector('i').classList.contains('fa-lock');
+    if (isLocked) return;
     const color = chroma.random();
     const text = col.querySelector('h2');
     const button = col.querySelector('button');
+
     text.textContent = color;
     col.style.background = color;
     col.style.color = setTextColor(text, color);
