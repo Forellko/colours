@@ -17,10 +17,16 @@ document.addEventListener('click', (event) => {
 
     node.classList.toggle('fa-lock-open');
     node.classList.toggle('fa-lock');
-  } else {
-    setRandomColors();
   }
 });
+
+document.addEventListener('dblclick', () => {
+  setRandomColors();
+});
+
+function copyToClipboard(text) {
+  return navigator.clipboard.writeText(text);
+}
 
 function setRandomColors() {
   cols.forEach((col) => {
